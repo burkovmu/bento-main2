@@ -67,14 +67,14 @@ export default function ContactsPage() {
             <ContactInfo
               icon={Phone}
               title="Телефон"
-              content="+7 (999) 123-45-67"
-              link="tel:+79991234567"
+              content="+7 (993) 907-30-77"
+              link="tel:+79939073077"
             />
             <ContactInfo
               icon={Mail}
               title="Email"
-              content="hello@bentocakes.ru"
-              link="mailto:hello@bentocakes.ru"
+              content="burkovmu@gmail.com"
+              link="mailto:burkovmu@gmail.com"
             />
             <ContactInfo
               icon={MapPin}

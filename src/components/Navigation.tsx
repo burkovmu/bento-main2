@@ -49,7 +49,7 @@ export function Navigation() {
         <div className="flex items-center gap-6">
           {/* Телефон */}
           <motion.a
-            href="tel:+79001234567"
+            href="tel:+79939073077"
             className="hidden lg:flex items-center gap-2 text-gray-600 hover:text-primary transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -57,7 +57,7 @@ export function Navigation() {
             <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50">
               <Phone className="w-5 h-5" />
             </div>
-            <span>+7 900 123-45-67</span>
+            <span>+7 (993) 907-30-77</span>
           </motion.a>
 
           {/* Иконки корзины и избранного */}
@@ -169,7 +169,7 @@ export function Navigation() {
                 {/* Контакты */}
                 <div className="space-y-6">
                   <motion.a
-                    href="tel:+79001234567"
+                    href="tel:+79939073077"
                     className="flex items-center gap-3 text-gray-600 hover:text-primary transition-colors"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -181,7 +181,7 @@ export function Navigation() {
                     </div>
                     <div>
                       <div className="text-sm font-medium text-gray-800">Позвонить нам</div>
-                      <div className="text-sm text-gray-600">+7 900 123-45-67</div>
+                      <div className="text-sm text-gray-600">+7 (993) 907-30-77</div>
                     </div>
                   </motion.a>
                 </div>
