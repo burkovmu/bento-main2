@@ -1,0 +1,6 @@
+<svg width="600" height="800" viewBox="0 0 600 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="800" fill="#F9E4DD"/>
+  <circle cx="300" cy="250" r="120" fill="#FFB6C1"/>
+  <path d="M200 500C200 444.772 244.772 400 300 400V400C355.228 400 400 444.772 400 500V600C400 655.228 355.228 700 300 700V700C244.772 700 200 655.228 200 600V500Z" fill="#FFC0CB"/>
+  <text x="300" y="750" text-anchor="middle" font-family="Arial" font-size="24" fill="#666666">Кондитер-декоратор</text>
+</svg> 
