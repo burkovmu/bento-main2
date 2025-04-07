@@ -99,55 +99,66 @@ export default function CatalogPage() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
         >
           {filteredProducts.map((product) => (
             <motion.div
               key={product.id}
               variants={itemVariants}
-              className="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-hover transition-all duration-300"
+              className="group relative bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
+              onMouseEnter={() => setHoveredProduct(product.id)}
+              onMouseLeave={() => setHoveredProduct(null)}
             >
-              <div 
-                className="relative h-[300px] group cursor-pointer"
-                onMouseEnter={() => setHoveredProduct(product.id)}
-                onMouseLeave={() => setHoveredProduct(null)}
-              >
+              {/* Изображение */}
+              <div className="relative aspect-square overflow-hidden">
                 <Image
                   src={product.image}
                   alt={product.name}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                {hoveredProduct === product.id && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="absolute inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center gap-4"
-                  >
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={() => addToCart(product)}
-                      className="bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-primary hover:text-white transition-colors flex items-center gap-2"
-                    >
-                      <ShoppingBag size={20} />
-                      В корзину
-                    </motion.button>
-                  </motion.div>
-                )}
-                <button
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                {/* Кнопка избранного */}
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                   onClick={() => handleFavoriteClick(product)}
-                  className={`absolute top-4 right-4 p-2 rounded-full ${
-                    isFavorite(product.id) ? 'bg-primary text-white' : 'bg-white text-gray-600'
-                  } shadow-md hover:scale-110 transition-transform`}
+                  className="absolute top-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 backdrop-blur text-gray-800 shadow-lg transition-colors hover:bg-primary hover:text-white"
                 >
-                  <Heart size={20} />
-                </button>
+                  <Heart className={`h-5 w-5 transition-colors duration-300 ${isFavorite(product.id) ? 'fill-primary text-primary' : ''}`} />
+                </motion.button>
+
+                {/* Бейдж категории */}
+                <div className="absolute top-4 left-4">
+                  <div className="flex items-center gap-1 rounded-full bg-white/90 backdrop-blur px-3 py-1 text-xs font-medium text-primary shadow-lg">
+                    {product.category}
+                  </div>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="font-display font-bold text-xl text-gray-800 mb-2">{product.name}</h3>
-                <p className="text-gray-600 mb-4 line-clamp-2">{product.description}</p>
-                <p className="text-2xl font-bold text-primary">{product.price} ₽</p>
+
+              {/* Информация о продукте */}
+              <div className="p-4">
+                <h3 className="text-lg font-semibold text-gray-800 mb-1 group-hover:text-primary transition-colors duration-300">
+                  {product.name}
+                </h3>
+                <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+                  {product.description}
+                </p>
+                <div className="flex items-center justify-between">
+                  <p className="text-xl font-bold text-primary">
+                    {product.price} ₽
+                  </p>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => addToCart(product)}
+                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-white text-sm font-medium shadow-lg hover:shadow-xl transition-all"
+                  >
+                    <ShoppingBag className="h-4 w-4" />
+                    <span>В корзину</span>
+                  </motion.button>
+                </div>
               </div>
             </motion.div>
           ))}
