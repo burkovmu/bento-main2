@@ -48,9 +48,9 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="text-center lg:text-left"
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
+  <motion.div
+    initial={{ opacity: 0, scale: 0.8 }}
+    animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
               className="inline-flex items-center gap-2 bg-primary/5 px-4 py-2 rounded-full text-primary text-sm lg:text-base font-medium mb-6 backdrop-blur-sm"
             >
@@ -100,7 +100,7 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+    transition={{ duration: 0.8 }}
             className="relative"
           >
             <motion.div
@@ -109,11 +109,11 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl"
             >
-              <Image
+      <Image
                 src="/images/hero-main.webp"
                 alt="Торт на заказ"
-                fill
-                className="object-cover"
+        fill
+        className="object-cover"
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
@@ -140,13 +140,13 @@ const Hero = () => {
                     <div className="text-sm text-gray-500">Средний рейтинг</div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          </motion.div>
+    </div>
+  </motion.div>
+  </motion.div>
         </div>
       </div>
     </section>
-  )
+)
 }
 
 const PopularProducts = () => {
@@ -528,8 +528,8 @@ const Achievements = () => {
             </motion.div>
           ))}
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
   )
 }
 

@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { Heart, ShoppingBag, Sparkles } from 'lucide-react'
 import { useFavorites } from '@/context/FavoritesContext'
 import { useCart } from '@/hooks/useCart'
-import { Product } from '@/data/products'
+import { Product } from '@/types/product'
 
 type CakeCardProps = Product & {
   isFavorite: boolean
@@ -38,7 +38,7 @@ export function CakeCard({ id, name, description, price, image, category, isFavo
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            onClick={() => addToCart({ id, name, description, price, image, category })}
+            onClick={() => addToCart({ id, name, description, price, image, category, rating: 0, weight: 0 })}
             className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 backdrop-blur text-gray-800 shadow-lg transition-colors hover:bg-primary hover:text-white"
           >
             <ShoppingBag className="h-6 w-6" />
