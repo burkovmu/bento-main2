@@ -18,8 +18,9 @@ import {
 import Image from 'next/image'
 import Link from 'next/link'
 import { useFavorites } from '@/context/FavoritesContext'
-import { useCart } from '@/context/CartContext'
+import { useCart } from '@/hooks/useCart'
 import { products } from '@/data/products'
+import CakeCard from '@/components/CakeCard'
 
 // Выбираем только торты и берем первые 3
 const popularCakes = products
@@ -242,61 +243,11 @@ const PopularProducts = () => {
               variants={itemVariants}
               className="group relative bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
             >
-              {/* Изображение */}
-              <div className="relative aspect-square overflow-hidden">
-                <Image
-                  src={cake.image}
-                  alt={cake.name}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
-                {/* Кнопка избранного */}
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => handleFavoriteClick(cake.id)}
-                  className="absolute top-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 backdrop-blur text-gray-800 shadow-lg transition-colors hover:bg-primary hover:text-white"
-                >
-                  <Heart className={`h-5 w-5 transition-colors duration-300 ${isFavorite(cake.id) ? 'fill-primary text-primary' : ''}`} />
-                </motion.button>
-
-                {/* Бейдж категории */}
-                <div className="absolute top-4 left-4">
-                  <div className="flex items-center gap-1 rounded-full bg-white/90 backdrop-blur px-3 py-1 text-xs font-medium text-primary shadow-lg">
-                    {cake.category}
-                  </div>
-                </div>
-              </div>
-
-              {/* Информация о продукте */}
-              <div className="p-4">
-                <h3 className="text-lg font-semibold text-gray-800 mb-1 group-hover:text-primary transition-colors duration-300">
-                  {cake.name}
-                </h3>
-                <p className="text-sm text-gray-600 mb-3 line-clamp-2">
-                  {cake.description}
-                </p>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                    <span className="text-sm text-gray-600">{cake.rating}</span>
-                  </div>
-                  <p className="text-xl font-bold text-primary">
-                    {cake.price} ₽
-                  </p>
-                </div>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => addToCart(cake)}
-                  className="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-primary text-white text-sm font-medium shadow-lg hover:shadow-xl transition-all"
-                >
-                  <ShoppingBag className="h-4 w-4" />
-                  <span>В корзину</span>
-                </motion.button>
-              </div>
+              <CakeCard
+                {...cake}
+                isFavorite={isFavorite(cake.id)}
+                onFavoriteClick={() => handleFavoriteClick(cake.id)}
+              />
             </motion.div>
           ))}
               </motion.div>
