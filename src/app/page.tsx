@@ -20,7 +20,7 @@ import Link from 'next/link'
 import { useFavorites } from '@/context/FavoritesContext'
 import { useCart } from '@/hooks/useCart'
 import { products } from '@/data/products'
-import CakeCard from '@/components/CakeCard'
+import { CakeCard } from '@/components/CakeCard'
 
 // Выбираем только торты и берем первые 3
 const popularCakes = products
